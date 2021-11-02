@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/format.h
+iostream
+-
+iomanip
+-
+limits
+-
+concepts
+-
+
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/main.cpp
+fstream
+-
+string
+-
+solve.h
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/solve.h
+
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/solve.h
+specmat.h
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/specmat.h
+
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/specmat.h
+vector.h
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/vector.h
+
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/vector.h
+vector
+-
+random
+-
+algorithm
+-
+functional
+-
+format.h
+C:/Users/user/Desktop/University/Works/Numeric/laba3/laba3/format.h
+
