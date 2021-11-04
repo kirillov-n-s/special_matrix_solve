@@ -1,17 +1,17 @@
 #pragma once
 
-#include "specmat.h"
+#include "spmatrix.h"
 
 namespace num
 {
     template<std::floating_point T>
-    vector<T> solve(specmat<T> mat, vector<T> vec);
+    vector<T> solve(spmatrix<T> mat, vector<T> vec);
 }
 
 namespace num
 {
     template<std::floating_point T>
-    vector<T> solve(specmat<T> mat, vector<T> vec)
+    vector<T> solve(spmatrix<T> mat, vector<T> vec)
     {
         //aliases
         auto& a = mat.a;
@@ -26,7 +26,7 @@ namespace num
         vector<T> x(n), r(n - 2, 0, 2);
         T R;
 
-        //step 3
+        //step 1
         r[k + 1] = a[k + 1];
         for (std::size_t i = k + 1; i < l - 1; i++)
         {
@@ -55,7 +55,7 @@ namespace num
             f[l]     -= R * f[i];
         }
 
-        //step 3 last iteration
+        //step 1 last iteration
         //because vectors a,b,c in special matrices are of size n - 2, they cannot be indexed [l - 1]
         //that design choice saves us from the need to check if a,b,c correlate with p,q in edge cases
         R = 1 / b[l - 1];
@@ -76,7 +76,7 @@ namespace num
         q[l] -= R * c[l - 1];
         f[l] -= R * f[l - 1];
 
-        //step 4
+        //step 2
         R = 1 / p[k];
         p[k] = 1;
         p[l] *= R;
@@ -95,11 +95,11 @@ namespace num
         p[l] = 0;
         f[k] -= f[l] * R;
 
-        //step 5
+        //step 3
         for (std::size_t i = k + 1; i <= l - 1; i++)
             f[i] -= r[i] * f[k];
 
-        //step 6
+        //step 4
         x[l] = f[l];
         for (std::size_t i = l - 1; i > k; i--)
             x[i] = f[i] - c[i] * x[i + 1];

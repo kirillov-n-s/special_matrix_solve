@@ -7,7 +7,6 @@
 
 #include "format.h"
 
-//class / func decl (forward)
 namespace num
 {
     template<std::floating_point T>
@@ -33,12 +32,16 @@ namespace num
     T operator*(const vector<T> &lhs, const vector<T> &rhs);
 
     template<std::floating_point T>
+    vector<T> operator%(const vector<T> &lhs, const vector<T> &rhs);
+    template<std::floating_point T>
+    vector<T> operator/(const vector<T> &lhs, const vector<T> &rhs);
+
+    template<std::floating_point T>
     std::ostream &operator<<(std::ostream &out, const vector<T> &vec);
     template<std::floating_point T>
     std::istream &operator>>(std::istream &in, vector<T> &vec);
 }
 
-//class def
 namespace num
 {
     template<std::floating_point T>
@@ -70,14 +73,17 @@ namespace num
         friend vector operator-<T>(const vector &lhs, const vector &rhs);
 
         friend vector operator*<T>(const vector &vec, const T &scalar);
+        friend vector operator*<T>(const T &scalar, const vector &vec);
         friend T operator*<T>(const vector &lhs, const vector &rhs);
+
+        friend vector operator%<T>(const vector &lhs, const vector &rhs);
+        friend vector operator/<T>(const vector &lhs, const vector &rhs);
 
         friend std::ostream &operator<<<T>(std::ostream &out, const vector &vec);
         friend std::istream &operator>><T>(std::istream &in, vector &vec);
     };
 }
 
-//func def
 namespace num
 {
     template<std::floating_point T>
@@ -197,6 +203,22 @@ namespace num
         int n = lhs.size();
         for (int i = 0; i < n; i++)
             res += lhs._values[i] * rhs._values[i];
+        return res;
+    }
+
+    template<std::floating_point T>
+    vector<T> operator%(const vector<T> &lhs, const vector<T> &rhs)
+    {
+        vector<T> res(lhs.size());
+        std::ranges::transform(lhs._values, rhs._values, res._values.begin(), std::multiplies());
+        return res;
+    }
+
+    template<std::floating_point T>
+    vector<T> operator/(const vector<T> &lhs, const vector<T> &rhs)
+    {
+        vector<T> res(lhs.size());
+        std::ranges::transform(lhs._values, rhs._values, res._values.begin(), std::divides());
         return res;
     }
 

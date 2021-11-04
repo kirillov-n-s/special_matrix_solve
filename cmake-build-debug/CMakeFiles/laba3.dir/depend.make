@@ -4,6 +4,6 @@
 CMakeFiles\laba3.dir\main.cpp.obj: ..\format.h
 CMakeFiles\laba3.dir\main.cpp.obj: ..\main.cpp
 CMakeFiles\laba3.dir\main.cpp.obj: ..\solve.h
-CMakeFiles\laba3.dir\main.cpp.obj: ..\specmat.h
+CMakeFiles\laba3.dir\main.cpp.obj: ..\spmatrix.h
 CMakeFiles\laba3.dir\main.cpp.obj: ..\vector.h
 
