@@ -1,1 +1,1 @@
-University assignment in numeric methods: special matrix solve
+University assignment in numeric methods: special matrix solver
